@@ -13,23 +13,9 @@ const promise2 = new Promise((resolve, reject) => {
   setTimeout(reject, 3000);
 });
 
-promise1.then(
-  function (value) {
-    myDisplayer(value);
-  },
-  function (error) {
-    myDisplayer2(error);
-  },
-);
+promise1.then(myDisplayer, myDisplayer2);
 
-promise2.then(
-  function (value) {
-    myDisplayer(value);
-  },
-  function (error) {
-    myDisplayer2(error);
-  },
-);
+promise2.then(myDisplayer, myDisplayer2);
 
 function myDisplayer() {
   const div = document.createElement('div');
@@ -39,8 +25,6 @@ function myDisplayer() {
   div.textContent = 'Promise was resolved!';
   body.appendChild(div);
 }
-
-setTimeout(myDisplayer2, 3000);
 
 function myDisplayer2() {
   const div = document.createElement('div');
